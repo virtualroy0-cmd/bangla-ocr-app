@@ -2,7 +2,7 @@ st.set_page_config(page_title="Bangla OCR Tool", layout="centered")
 
 st.title("📄 Bangla Ejar OCR Tool")
 st.write("👉 Upload → OCR → Auto Fix → Download")
-
+from pdf2image import convert_from_bytes
 import streamlit as st
 from PIL import Image
 import pytesseract
@@ -12,6 +12,10 @@ st.title("Bangla OCR Auto Replace App")
 uploaded_file = st.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 
 if uploaded_file:
+    if uploaded_file.type == "application/pdf":
+    images = convert_from_bytes(uploaded_file.read())
+    image = images[0]
+else:
     image = Image.open(uploaded_file)
     st.image(image)
 
