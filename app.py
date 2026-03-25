@@ -1,3 +1,8 @@
+st.set_page_config(page_title="Bangla OCR Tool", layout="centered")
+
+st.title("📄 Bangla Ejar OCR Tool")
+st.write("👉 Upload → OCR → Auto Fix → Download")
+
 import streamlit as st
 from PIL import Image
 import pytesseract
@@ -15,7 +20,11 @@ if uploaded_file:
     st.write("OCR Text:")
     st.text_area("", text)
 
-    new_text = text.replace("আমার","বাদীর").replace("আমাকে","বাদীকে")
+    new_text = text
+new_text = new_text.replace("আমার","বাদীর")
+new_text = new_text.replace("আমাকে","বাদীকে")
+new_text = new_text.replace("আমাদের","বাদীদের")
+new_text = new_text.replace("আমি","বাদী")
 
     st.write("Final Text:")
     st.text_area("", new_text)
