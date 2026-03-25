@@ -11,10 +11,9 @@ st.title("Bangla OCR Auto Replace App")
 
 uploaded_file = st.file_uploader("Upload Image", type=["png","jpg","jpeg"])
 
-if uploaded_file:
-    if uploaded_file.type == "application/pdf":
+if uploaded_file.type == "application/pdf":
     images = convert_from_bytes(uploaded_file.read())
-    image = images[0]
+    image = images[0]  
 else:
     image = Image.open(uploaded_file)
     st.image(image)
